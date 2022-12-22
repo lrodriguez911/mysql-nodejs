@@ -29,7 +29,7 @@ router.put('/', async (req, res, next) => {
 })
 router.delete('/', async (req, res, next) => {
     try {
-        res.json(await programmingLanguages.deleteDb(req.body.id))
+        res.json(await programmingLanguages.deleteDb(req.query.id))
     } catch (err) {
             console.error(`This is error: ${err.message}`);
             next(err);

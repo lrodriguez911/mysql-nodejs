@@ -43,7 +43,7 @@ async function update(id, data) {
     return {message};
 }
 async function deleteDb(id) {
-    const result = await db.query(`DELETE from languages_programming where id =${id}`)
+    const result = await db.query(`DELETE from languages_programming WHERE id =${id}`)
     let message = `Error  deleting the language programming in the db`
         if(result.affectedRows){
             message = `The languague was delete successfully`
