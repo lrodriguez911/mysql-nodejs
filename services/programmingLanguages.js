@@ -33,8 +33,26 @@ async function read(page = 1) {
     }
 }
 
-
+async function update(id, data) {
+    const result = await db.query(`UPDATE languages_programming SET name='${data.name}', year_launch=${data.year_launch}, github_rank=${data.github_rank} WHERE id=${id}`)
+    
+    let message = `Error to update the language programming in the db`
+        if(result.affectedRows){
+            message = `The languague was updated successfully`
+        }
+    return {message};
+}
+async function deleteDb(id) {
+    const result = await db.query(`DELETE from languages_programming where id =${id}`)
+    let message = `Error  deleting the language programming in the db`
+        if(result.affectedRows){
+            message = `The languague was delete successfully`
+        }
+    return {message};
+}
 module.exports = {
     create, 
-    read
+    read,
+    update,
+    deleteDb
 }

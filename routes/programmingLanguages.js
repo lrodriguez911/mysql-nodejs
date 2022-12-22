@@ -19,5 +19,21 @@ router.post('/', async (req, res, next) => {
             next(err);
     }
 })
+router.put('/', async (req, res, next) => {
+    try {
+        res.json(await programmingLanguages.update(req.body.id, req.body))
+    } catch (err) {
+            console.error(`This is error: ${err.message}`);
+            next(err);
+    }
+})
+router.delete('/', async (req, res, next) => {
+    try {
+        res.json(await programmingLanguages.deleteDb(req.body.id))
+    } catch (err) {
+            console.error(`This is error: ${err.message}`);
+            next(err);
+    }
+})
 
 module.exports = router;
